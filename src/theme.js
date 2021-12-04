@@ -1,6 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
 
-function addAlpha (hex, alpha) {
+function addAlpha(hex, alpha) {
   return 'rgba(' + (
     hex
       .substring(1)
@@ -13,8 +13,8 @@ function addAlpha (hex, alpha) {
 export const dark = window.matchMedia('(prefers-color-scheme: dark)').matches
 
 export const vuetifyLight = {
-  primary: colors.teal.base,
-  secondary: colors.teal.lighten1,
+  primary: colors.red.darken4,
+  secondary: colors.red.darken1,
   accent: colors.amber.darken1,
   error: colors.red.base,
   warning: colors.orange.base,
@@ -22,8 +22,8 @@ export const vuetifyLight = {
   success: colors.green.base
 }
 export const vuetifyDark = {
-  primary: colors.teal.base,
-  secondary: colors.teal.lighten1,
+  primary: colors.red.darken3,
+  secondary: colors.red.base,
   accent: colors.amber.darken1,
   error: colors.red.base,
   warning: colors.orange.base,
@@ -87,12 +87,12 @@ export const itemsDark = {
 export const items = dark ? itemsDark : itemsLight
 
 export const selectionLight = {
-  background: addAlpha(colors.teal.base, 0.25),
-  border: addAlpha(colors.teal.base, 0.75)
+  background: addAlpha(colors.red.base, 0.25),
+  border: addAlpha(colors.red.base, 0.75)
 }
 export const selectionDark = {
-  background: addAlpha(colors.teal.base, 0.25),
-  border: addAlpha(colors.teal.base, 0.75)
+  background: addAlpha(colors.red.base, 0.25),
+  border: addAlpha(colors.red.base, 0.75)
 }
 export const selection = dark ? selectionDark : selectionLight
 
