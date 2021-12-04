@@ -1,22 +1,21 @@
 import { expect } from 'chai'
 
 import { MAX_UNDO_LENGTH, topology } from '@/store/topology'
-import exampleMedium2Controllers from '@/examples/medium_2_controllers'
-import exampleTiny from '@/examples/tiny'
+import exampleSimpleOneSwitch from '@/examples/simple_one_switch'
 import exporter from '@/exporter'
 
 const { getters, mutations } = topology
 
 const initState = JSON.stringify(topology.state)
-function getMockState (...states) {
+function getMockState(...states) {
   return Object.assign(
     JSON.parse(initState),
     ...states
   )
 }
-function getMockStateWithTopo (...states) {
+function getMockStateWithTopo(...states) {
   return getMockState(
-    { data: exporter.importData(exampleMedium2Controllers) },
+    { data: exporter.importData(exampleSimpleOneSwitch) },
     ...states
   )
 }
@@ -153,7 +152,7 @@ describe('Store topology', () => {
 
   describe('Mutations', () => {
     describe('Import data', () => {
-      function testImportedProject (state, externalData) {
+      function testImportedProject(state, externalData) {
         expect(state)
           .to.have.all.keys('future', 'past', 'data')
 
@@ -181,17 +180,17 @@ describe('Store topology', () => {
       it('Into empty store', () => {
         const state = getMockState()
 
-        mutations.importData(state, exampleTiny)
+        mutations.importData(state, exampleSimpleOneSwitch)
 
-        testImportedProject(state, exampleTiny)
+        testImportedProject(state, exampleSimpleOneSwitch)
       })
 
       it('With preexisting project', () => {
         const state = getMockStateWithTopo()
 
-        mutations.importData(state, exampleTiny)
+        mutations.importData(state, exampleSimpleOneSwitch)
 
-        testImportedProject(state, exampleTiny)
+        testImportedProject(state, exampleSimpleOneSwitch)
       })
     })
 
@@ -293,13 +292,13 @@ describe('Store topology', () => {
     })
 
     describe('Push change', () => {
-      function generateUnit (suffix = '') {
+      function generateUnit(suffix = '') {
         return {
           before: { id: `B${suffix}` },
           after: { id: `A${suffix}` }
         }
       }
-      function testState (state, past, future, pastUnit) {
+      function testState(state, past, future, pastUnit) {
         expect(state)
           .to.have.own.property('past')
           .that.is.an('array')

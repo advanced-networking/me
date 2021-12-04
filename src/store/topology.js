@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import exporter from '@/exporter'
 
-import exampleData from '@/examples/medium_1_controller'
+import exampleData from '@/examples/simple_one_switch'
 
 const MAX_UNDO_LENGTH = 200
 export { MAX_UNDO_LENGTH }
 
-function prepareUndoRedoChange (changeLogItem) {
+function prepareUndoRedoChange(changeLogItem) {
   const change = {
     remove: [],
     replace: []
@@ -34,16 +34,16 @@ export const topology = {
     future: []
   },
   getters: {
-    data (state) {
+    data(state) {
       return state.data
     },
-    canUndo (state) {
+    canUndo(state) {
       return state.past.length
     },
-    canRedo (state) {
+    canRedo(state) {
       return state.future.length
     },
-    boundingBox (state) {
+    boundingBox(state) {
       // Find the highest and lowest x and y item center coordinates
       // This can be cached until the state changes
       const rawBB = (() => {
@@ -118,7 +118,7 @@ export const topology = {
     }
   },
   mutations: {
-    importData ({ data: sd, past, future }, importData) {
+    importData({ data: sd, past, future }, importData) {
       past.splice(0)
       future.splice(0)
 
@@ -133,7 +133,7 @@ export const topology = {
         Vue.set(sd, key, data[key])
       )
     },
-    setValues ({ data: sd }, data) {
+    setValues({ data: sd }, data) {
       Object.keys(data).forEach(key => {
         const value = data[key]
         if (value != null && value !== '') {
@@ -143,7 +143,7 @@ export const topology = {
         }
       })
     },
-    applyChange ({ data: sd }, { remove, update, replace }) {
+    applyChange({ data: sd }, { remove, update, replace }) {
       remove && remove.forEach(id => {
         Vue.delete(sd.items, id)
       })
@@ -165,14 +165,14 @@ export const topology = {
         Vue.set(sd.items, item.id, item)
       })
     },
-    pushChange ({ past, future }, unit) {
+    pushChange({ past, future }, unit) {
       future.splice(0)
       if (past.length >= MAX_UNDO_LENGTH) {
         past.splice(0, past.length + 1 - MAX_UNDO_LENGTH)
       }
       past.push(unit)
     },
-    undoShift ({ past, future }) {
+    undoShift({ past, future }) {
       if (past.length) {
         if (future.length >= MAX_UNDO_LENGTH) {
           future.shift()
@@ -180,7 +180,7 @@ export const topology = {
         future.push(past.pop())
       }
     },
-    redoShift ({ past, future }) {
+    redoShift({ past, future }) {
       if (future.length) {
         if (past.length >= MAX_UNDO_LENGTH) {
           past.shift()
@@ -190,7 +190,7 @@ export const topology = {
     }
   },
   actions: {
-    removeItems ({ commit, state }, ids) {
+    removeItems({ commit, state }, ids) {
       commit('pushChange', ids.map(id => ({
         before: JSON.stringify(state.data.items[id] || null),
         after: JSON.stringify(null)
@@ -200,7 +200,7 @@ export const topology = {
         remove: ids
       })
     },
-    updateItems ({ commit, state }, items) {
+    updateItems({ commit, state }, items) {
       commit('pushChange', items.map(item => {
         const before = state.data.items[item.id]
         return {
@@ -213,7 +213,7 @@ export const topology = {
         update: items
       })
     },
-    replaceItems ({ commit, state }, items) {
+    replaceItems({ commit, state }, items) {
       commit('pushChange', items.map(item => ({
         before: JSON.stringify(state.data.items[item.id] || null),
         after: JSON.stringify(item)
@@ -223,7 +223,7 @@ export const topology = {
         replace: items
       })
     },
-    undo ({ commit, state }) {
+    undo({ commit, state }) {
       const unit = state.past[state.past.length - 1]
       if (unit) {
         commit('undoShift')
@@ -232,7 +232,7 @@ export const topology = {
         throw new Error('Nothing to undo.')
       }
     },
-    redo ({ commit, state }) {
+    redo({ commit, state }) {
       const unit = state.future[state.future.length - 1]
       if (unit) {
         commit('redoShift')

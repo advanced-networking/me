@@ -54,39 +54,15 @@ import scriptImportWarning from './scriptImportWarning.txt'
 import { mapGetters } from 'vuex'
 
 import exampleEmpty from '@/examples/empty'
-import exampleMedium1C from '@/examples/medium_1_controller'
-import exampleMedium2C from '@/examples/medium_2_controllers'
-import exampleTiny from '@/examples/tiny'
-import exampleTinyController from '@/examples/tiny_controller'
-import exampleTinyMininetConf from '@/examples/tiny_mininet_conf'
-import exampleTinyPhysicalInterface from '@/examples/tiny_physical_interface'
-import exampleTinyTC from '@/examples/tiny_tc'
+import exampleSimpleOneSwitch from '@/examples/simple_one_switch'
 
 export default {
   name: 'Import',
   data: () => ({
     emptyProject: exampleEmpty,
     examples: [{
-      title: 'Tiny without controller',
-      data: exampleTiny
-    }, {
-      title: 'Tiny with controller',
-      data: exampleTinyController
-    }, {
-      title: 'Tiny with physical interface',
-      data: exampleTinyPhysicalInterface
-    }, {
-      title: 'Tiny with traffic control',
-      data: exampleTinyTC
-    }, {
-      title: 'Tiny with Mininet settings',
-      data: exampleTinyMininetConf
-    }, {
-      title: 'Medium with 1 controller',
-      data: exampleMedium1C
-    }, {
-      title: 'Medium with 2 controllers',
-      data: exampleMedium2C
+      title: 'Simple One Switch',
+      data: exampleSimpleOneSwitch
     }]
   }),
   computed: {

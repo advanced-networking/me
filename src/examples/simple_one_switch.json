@@ -1,0 +1,210 @@
+{
+    "version": 0,
+    "items": [
+        {
+            "id": "f592a23b-f2c5-4acd-9e82-579877667870",
+            "type": "switch",
+            "hostname": "s1",
+            "switchType": "OVSBridge",
+            "dpid": "1",
+            "x": -19,
+            "y": -36
+        },
+        {
+            "id": "a2254e37-052f-4680-874b-24fbeba87352",
+            "hostname": "eth0",
+            "type": "port",
+            "x": -114,
+            "y": -121
+        },
+        {
+            "id": "d4cb320e-976a-4db8-9a99-954545ba3533",
+            "type": "association",
+            "from": "f592a23b-f2c5-4acd-9e82-579877667870",
+            "to": "a2254e37-052f-4680-874b-24fbeba87352"
+        },
+        {
+            "id": "e86f48c6-1354-4c27-a017-d6da34fbef02",
+            "hostname": "eth1",
+            "type": "port",
+            "x": 69,
+            "y": -121
+        },
+        {
+            "id": "e91c1765-6cd9-4fa5-8585-3a82b8a60c30",
+            "type": "association",
+            "from": "f592a23b-f2c5-4acd-9e82-579877667870",
+            "to": "e86f48c6-1354-4c27-a017-d6da34fbef02"
+        },
+        {
+            "id": "6acfe021-0d90-4c60-891a-6ad7aaf1c198",
+            "hostname": "eth2",
+            "type": "port",
+            "x": 72,
+            "y": 42
+        },
+        {
+            "id": "0b0d7d02-c8c2-49fe-b83e-40de99bdad42",
+            "type": "association",
+            "from": "f592a23b-f2c5-4acd-9e82-579877667870",
+            "to": "6acfe021-0d90-4c60-891a-6ad7aaf1c198"
+        },
+        {
+            "id": "ba826c30-61f9-48f3-8f70-8f0b818a2665",
+            "hostname": "eth3",
+            "type": "port",
+            "x": -106,
+            "y": 43
+        },
+        {
+            "id": "e9396f9e-e166-4f70-af19-f7d4fd9ee459",
+            "type": "association",
+            "from": "f592a23b-f2c5-4acd-9e82-579877667870",
+            "to": "ba826c30-61f9-48f3-8f70-8f0b818a2665"
+        },
+        {
+            "id": "d7cba8ee-ad5b-4245-9b31-de91cdf98660",
+            "type": "dummy",
+            "hostname": "OvS Bridge",
+            "x": -120,
+            "y": -35
+        },
+        {
+            "id": "2968ff16-78a4-4315-a263-b8f42983b375",
+            "type": "association",
+            "hostname": "",
+            "from": "d7cba8ee-ad5b-4245-9b31-de91cdf98660",
+            "to": "f592a23b-f2c5-4acd-9e82-579877667870"
+        },
+        {
+            "id": "584b466b-7858-4330-bed5-089e30abf78b",
+            "type": "controller",
+            "hostname": "c1",
+            "controllerType": "RemoteController",
+            "ip": "127.0.0.1",
+            "port": 6633,
+            "protocol": "tcp",
+            "x": 201,
+            "y": -40
+        },
+        {
+            "id": "cbc8dc4e-6f23-422d-a0c1-325d3f917c81",
+            "type": "association",
+            "hostname": "Connection to Controller",
+            "from": "584b466b-7858-4330-bed5-089e30abf78b",
+            "to": "f592a23b-f2c5-4acd-9e82-579877667870"
+        },
+        {
+            "id": "75954100-2a87-45f8-a8e3-a7c17cf55fc0",
+            "type": "host",
+            "hostname": "h1",
+            "x": -315,
+            "y": -188
+        },
+        {
+            "id": "07a99268-7263-4df8-b71b-c09077aa5d78",
+            "hostname": "eth0",
+            "type": "port",
+            "x": -287,
+            "y": -121
+        },
+        {
+            "id": "395c9476-90a1-4e20-8d77-09e60f5d53a7",
+            "type": "association",
+            "from": "75954100-2a87-45f8-a8e3-a7c17cf55fc0",
+            "to": "07a99268-7263-4df8-b71b-c09077aa5d78"
+        },
+        {
+            "id": "510d53a2-8acd-4867-ade2-dd16b4727509",
+            "type": "link",
+            "hostname": "Link with Constriants",
+            "bandwidth": 2096,
+            "delay": "20ms",
+            "from": "07a99268-7263-4df8-b71b-c09077aa5d78",
+            "to": "a2254e37-052f-4680-874b-24fbeba87352"
+        },
+        {
+            "id": "16d1d762-fc42-48ac-b22a-06b52029f3c9",
+            "type": "host",
+            "hostname": "h2",
+            "x": 253,
+            "y": -193
+        },
+        {
+            "id": "2466de58-6af9-41ef-a022-64a9bb74b83f",
+            "hostname": "eth0",
+            "type": "port",
+            "x": 228,
+            "y": -123
+        },
+        {
+            "id": "7d491a56-cb74-4254-a9ea-2192aeec6af3",
+            "type": "association",
+            "from": "16d1d762-fc42-48ac-b22a-06b52029f3c9",
+            "to": "2466de58-6af9-41ef-a022-64a9bb74b83f"
+        },
+        {
+            "id": "9515c547-bf8c-4ed2-a1e6-f8072c414a7b",
+            "type": "link",
+            "hostname": "Link w/o Constraints",
+            "from": "2466de58-6af9-41ef-a022-64a9bb74b83f",
+            "to": "e86f48c6-1354-4c27-a017-d6da34fbef02"
+        },
+        {
+            "id": "7abbfbb6-8776-4962-a4e9-86c531ec0edc",
+            "type": "host",
+            "hostname": "h3",
+            "x": 323,
+            "y": 110
+        },
+        {
+            "id": "535d29e5-7f9f-4f23-9940-b8ebb9fb2a79",
+            "hostname": "eth0",
+            "type": "port",
+            "x": 282,
+            "y": 39
+        },
+        {
+            "id": "affc827d-a435-4795-8439-4664a003dde3",
+            "type": "association",
+            "from": "7abbfbb6-8776-4962-a4e9-86c531ec0edc",
+            "to": "535d29e5-7f9f-4f23-9940-b8ebb9fb2a79"
+        },
+        {
+            "id": "bd4a877c-f2ec-4c5a-ac7f-2cacb3be3e61",
+            "type": "host",
+            "hostname": "h4",
+            "x": -301,
+            "y": 119
+        },
+        {
+            "id": "028a41cd-7ea0-4b04-8b07-491112545512",
+            "hostname": "eth0",
+            "type": "port",
+            "x": -270,
+            "y": 44
+        },
+        {
+            "id": "5312ccb8-f3fc-471f-8cf7-c07cd2c65036",
+            "type": "association",
+            "from": "bd4a877c-f2ec-4c5a-ac7f-2cacb3be3e61",
+            "to": "028a41cd-7ea0-4b04-8b07-491112545512"
+        },
+        {
+            "id": "93885406-ef21-4e39-bee4-e738198b8332",
+            "type": "link",
+            "hostname": "Link with Constraints",
+            "bandwidth": 1024,
+            "delay": "5ms",
+            "from": "535d29e5-7f9f-4f23-9940-b8ebb9fb2a79",
+            "to": "6acfe021-0d90-4c60-891a-6ad7aaf1c198"
+        },
+        {
+            "id": "69881e18-a53c-45f0-9ce4-cbabff066bf6",
+            "type": "link",
+            "hostname": "Link w/o Constraints",
+            "from": "ba826c30-61f9-48f3-8f70-8f0b818a2665",
+            "to": "028a41cd-7ea0-4b04-8b07-491112545512"
+        }
+    ]
+}
