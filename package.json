@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "build": "vue-cli-service build",
-    "deploy": "./gh-pages.sh",
     "lint:ci": "vue-cli-service lint --no-fix",
     "lint:fix": "vue-cli-service lint",
     "serve": "vue-cli-service serve",
