@@ -4,6 +4,9 @@
       <v-btn :disabled="working" outlined block color="primary" @click="downloadJSON">JSON</v-btn>
     </v-flex>
     <v-flex xs12 sm4>
+      <v-btn :disabled="working" outlined block color="primary" @click="downloadMnScript">Mininet topology file</v-btn>
+    </v-flex>
+    <v-flex xs12 sm4>
       <v-btn :disabled="working" outlined block color="primary" @click="downloadScript">Python 2 script</v-btn>
     </v-flex>
     <v-flex xs12 sm4>
@@ -27,6 +30,7 @@
 <script>
 import AddressingPlan from '@/builder/AddressingPlan'
 import Builder from '@/builder'
+import MnBuilder from '@/mnbuilder'
 import VisCanvas from '@/components/vis/VisCanvas'
 import exporter from '@/exporter'
 import { mapGetters } from 'vuex'
@@ -97,6 +101,23 @@ export default {
         this.$emit('log', [])
 
         const builder = new Builder(exporter.exportData(this.data))
+        this.$emit('log', builder.log)
+        const script = builder.build()
+        this.showAlert('success', 'Script built.')
+        download(this.getFilename('py'), 'text/x-python;charset=utf-8', script)
+      } catch (error) {
+        console.error(error)
+        this.showAlert('error', 'Script was not built.')
+      } finally {
+        this.working = false
+      }
+    },
+    downloadMnScript () {
+      try {
+        this.working = true
+        this.$emit('log', [])
+
+        const builder = new MnBuilder(exporter.exportData(this.data))
         this.$emit('log', builder.log)
         const script = builder.build()
         this.showAlert('success', 'Script built.')
