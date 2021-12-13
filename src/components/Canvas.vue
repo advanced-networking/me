@@ -4,7 +4,7 @@
     <template v-else>
       <Vis ref="vis" @edit-item="editItem" />
       <Edit ref="edit" />
-      <v-speed-dial v-if="!isView" v-model="fab" bottom right open-on-hover style="position: fixed">
+      <v-speed-dial v-if="!isView" v-model="fab" bottom right style="position: fixed">
         <template #activator>
           <v-btn v-model="fab" fab dark color="primary" data-cy="fab-activator">
             <v-icon v-if="fab">mdi-chevron-down</v-icon>
