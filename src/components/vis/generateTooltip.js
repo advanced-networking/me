@@ -15,7 +15,7 @@ const generators = {
       ...(item.physical ? ['Physical interface'] : []),
       ...(item.ips || ['No addresses'])
     ]
-    return lines.join('<br/>')
+    return lines.join('\n')
   },
   link (item) {
     const parts = [
@@ -51,7 +51,7 @@ const generators = {
   controller (item) {
     const parts = [
       ...(item.controllerType != null ? [`${controllerTypesMap[item.controllerType] || item.controllerType}`] : ['Default']),
-      '<br/>',
+      '\n',
       ...(item.ip != null && item.port != null
         ? [
             item.ip.includes(':')
