@@ -1,9 +1,11 @@
 <template>
   <section>
-    <h3 class="headline">Description</h3>
+    <h3 class="headline">What is this?</h3>
 
     <p>
-      SDN topology editor in your web browser with Mininet export.
+      This is an Mininet editor hosted for SCC365 students.
+      <br>
+      You can use this to edit mininet topologies, and export them.
     </p>
 
     <p>

@@ -1,6 +1,6 @@
 <template>
-  <v-card class="circle my-5">
-    <img src="@/assets/icon.svg" alt="Mininet Editor logo">
+  <v-card class="logo my-5">
+    <img src="@/assets/icon.png" alt="SCC365 Logo">
   </v-card>
 </template>
 
@@ -11,6 +11,6 @@ export default {
 </script>
 
 <style scoped>
-.circle { border-radius: 100% !important; margin: 0 auto; width: 100%; max-width: 5em; }
-.circle img { width: 100%; height: 100%; }
+.logo { margin: 0 auto; width: 100%; max-width: 5em; }
+.logo img { width: 100%; height: 100%; }
 </style>
